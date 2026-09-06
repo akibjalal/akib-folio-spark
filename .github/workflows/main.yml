@@ -26,8 +26,37 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Configure for GitHub Pages
+        run: |
+          cat > vite.config.ts <<'EOF'
+          import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+
+          export default defineConfig({
+            vite: {
+              base: "/akib-folio-spark/",
+            },
+            tanstackStart: {
+              server: {
+                entry: "server",
+              },
+              prerender: {
+                enabled: true,
+                autoSubfolderIndex: true,
+                crawlLinks: true,
+                failOnError: true,
+              },
+            },
+          });
+          EOF
+
       - name: Build
         run: npm run build
+
+      - name: Check index
+        run: |
+          echo "Checking website..."
+          find .output/public -maxdepth 2 -type f | head -30
+          test -f .output/public/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -35,7 +64,7 @@ jobs:
       - name: Upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: ./.output/public
 
   deploy:
     needs: build
