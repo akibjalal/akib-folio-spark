@@ -253,12 +253,16 @@ svg {
 
 .hero__portrait { display: grid; gap: 1rem; justify-items: center; }
 .portrait {
-  width: min(280px, 70vw); aspect-ratio: 4 / 5;
-  border: 1px solid var(--border); border-radius: 20px;
+  width: min(280px, 62vw); aspect-ratio: 1 / 1;
+  border: 3px solid var(--border); border-radius: 50%;
   background: var(--surface); overflow: hidden;
   box-shadow: var(--shadow);
 }
-.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.portrait img {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 32%;
+  border-radius: 50%;
+}
 .portrait__placeholder {
   width: 100%; height: 100%;
   display: grid; place-content: center; justify-items: center; gap: .6rem;
@@ -381,6 +385,10 @@ svg {
 .contact__details a:hover { color: var(--accent-strong); }
 
 .contact__form { display: grid; gap: 1rem; }
+.contact__cta { display: grid; gap: .9rem; align-content: start; }
+.contact__cta h3 { margin: 0; }
+.contact__cta p { margin: 0; color: var(--text-muted); }
+.contact__cta .btn svg { width: 18px; height: 18px; }
 .field { display: grid; gap: .35rem; }
 .field label { font-size: .82rem; font-weight: 600; color: var(--text-muted); }
 .field input, .field textarea {

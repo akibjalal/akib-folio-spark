@@ -94,44 +94,6 @@
     el.addEventListener("click", function (event) { event.preventDefault(); });
   });
 
-  /* ---------- 7. Contact form → opens the visitor's mail client ---------- */
-  var EMAIL = "akibjalal16@gmail.com";
-  var form = document.getElementById("contactForm");
-  var note = document.getElementById("formNote");
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    var fields = ["cf-name", "cf-email", "cf-subject", "cf-message"].map(function (id) {
-      return document.getElementById(id);
-    });
-
-    var valid = true;
-    fields.forEach(function (field) {
-      var ok = field.checkValidity() && field.value.trim() !== "";
-      field.setAttribute("aria-invalid", ok ? "false" : "true");
-      if (!ok) valid = false;
-    });
-
-    if (!valid) {
-      note.textContent = "Please complete every field with a valid email address.";
-      return;
-    }
-
-    var name = fields[0].value.trim();
-    var email = fields[1].value.trim();
-    var subject = fields[2].value.trim();
-    var message = fields[3].value.trim();
-
-    var body = message + "\n\n—\n" + name + "\n" + email;
-    window.location.href =
-      "mailto:" + EMAIL +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
-
-    note.textContent = "Opening your email app… if nothing happens, write to " + EMAIL + " directly.";
-  });
-
-  /* ---------- 8. Footer year ---------- */
+  /* ---------- 7. Footer year ---------- */
   document.getElementById("year").textContent = String(new Date().getFullYear());
 })();
