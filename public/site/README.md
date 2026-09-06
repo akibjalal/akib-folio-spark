@@ -11,7 +11,7 @@ style.css                  Design system (colours, layout, responsive rules, ani
 script.js                  Theme toggle, mobile menu, scroll reveal, contact form
 assets/images/             Profile photo and project screenshots
 assets/icons/favicon.svg   Favicon placeholder
-assets/resume/resume.pdf   Your CV (add this file)
+assets/resume/resume.pdf   Downloadable CV
 ```
 
 ## Deploying to GitHub Pages
@@ -28,18 +28,15 @@ All asset paths are relative, so the site works from a repository subpath.
 
 | What | Where |
 |---|---|
-| Profile photo | `index.html` → replace `.portrait__placeholder` with `<img src="assets/images/profile.jpg" alt="Portrait of Akib Jalal">` |
-| Phone number | `index.html` → Contact section, "To be added" |
+| Profile photo | replace `assets/images/profile.jpg` (square image works best — it is shown in a circle) |
 | Resume PDF | Save it as `assets/resume/resume.pdf` — the button already points there |
 | Social links | `index.html` → put the URL in `href` and delete `data-placeholder` |
-| Skills | `index.html` → add `<li class="tag">Name</li>` inside a skill card's `<ul class="tags">` |
-| Projects | `index.html` → copy an `<article class="card project">` block and fill it in |
-| Certifications | `index.html` → replace the `.empty-state` block with cards |
+| Skills | `index.html` → edit the four cards in the Skills section |
+| Projects | the Projects section was removed while there is nothing to show — ask to add it back with real projects |
 | Colours | `style.css` → the `:root` / `[data-theme="light"]` variables at the top |
 
 ## Notes
 
 - Dark mode is the default; the toggle remembers the visitor's choice.
-- The contact form opens the visitor's own email client (`mailto:`) — nothing is
-  sent to a server, which is what keeps the site GitHub Pages compatible.
-- Placeholder links are deliberately inert so no button is ever broken.
+- The "Connect via Email" button opens the visitor's own email client (`mailto:`) —
+  nothing is sent to a server, which keeps the site GitHub Pages compatible.
